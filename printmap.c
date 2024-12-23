@@ -11,7 +11,7 @@ void printMap(int x,int y) {
     for(i=0; i<x; i++) {
         for(j=0; j<y; j++) {
             if(map[i][j]==7) printf("🏰 ");
-            else if(map[i][j]==-2) printf("❌ ");
+            else if(map[i][j]==-2) printf("🪨 ");
             else if(map[i][j]==8) printf("🌳 ");
             else if(map[i][j]==0) printf("🛣 ");
             else if(map[i][j]==1) printf("1️⃣ ");
