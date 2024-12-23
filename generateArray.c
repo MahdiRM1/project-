@@ -21,9 +21,9 @@ int generate_number() {//randomize road difficulty
 
 void generate_array(int x, int y) {
     srand(time(NULL));
-    for (int i = 0; i < x; i++) {
-        for (int j = 0; j < y; j++) {
-            map[i][j] = generate_number();
-        }
-    }
+    int i, j;
+    for (i = 0; i < 17; i++) 
+        for (j = 0; j < 17; j++) 
+            if(i<x && j<y) map[i][j] = generate_number();
+            else map[i][j] = INF;
 }

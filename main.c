@@ -15,24 +15,24 @@ int main() {
 		printf("enter x and y for map:");//game map
 		scanf("%d %d", &x, &y);
 		generate_array(x,y);
-		int xc, yc;
+		Node c;
 		printf("enter location of teriory:");
-		scanf("%d %d", &xc, &yc);
-		xc--;
-		yc--;
-		map[xc][yc] = 7;
+		scanf("%d %d", &c.x, &c.y);
+		c.x--;
+		c.y--;
+		map[c.x][c.y] = 7;
 
 		int v;
+		Node Vill[10];
 		printf("enter number of villages:");
 		scanf("%d", &v);
-		int Villx[maxv], Villy[maxv];
 		for(i=0; i<v; i++) {
 			int pi, qi;
 			printf("enter location of village %d:", i+1);
 			scanf("%d %d", &pi, &qi);
-			Villx[i] = pi - 1;
-			Villy[i] = qi - 1;
-			map[pi-1][qi-1] = 5;
+			Vill[i].x = pi - 1;
+			Vill[i].y = qi - 1;
+			map[Vill[i].x][Vill[i].y] = 8;
 		}
 
 		printf("enter number of blocked houses:");
@@ -41,7 +41,7 @@ int main() {
 			int pi, qi;
 			printf("enter location of blocked house %d:", i+1);
 			scanf("%d %d", &pi, &qi);
-			map[pi-1][qi-1] = -1;
+			map[pi-1][qi-1] = -2;
 		}
 
 		printMap(x,y);
@@ -50,10 +50,14 @@ int main() {
 		scanf("%d", &i);
 		if(!i) return 0;//finish
 
-		for(i=0; i<v; i++) croadtov(xc, yc, Villx, Villy, i, x, y);
-		printMap(x,y);
+		Path path;
 
-		printf("message for finnish\npress any key to exit\n");
+		for(i=0;i<v;i++)
+    	a_star(c, Vill[i], &path);
+
+		printMap(x, y);
+
+		printf("press any key to exit\n");
 		scanf("%d", &i);
 
 		return 0;
