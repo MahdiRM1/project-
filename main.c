@@ -12,6 +12,7 @@ const int maxv=10;
 int main() {
 		int n, i;
 		int x, y;
+		clearScreen();
 		printf("enter x and y for map:");//game map
 		scanf("%d %d", &x, &y);
 		generate_array(x,y);
@@ -44,6 +45,7 @@ int main() {
 			map[pi-1][qi-1] = -2;
 		}
 
+		clearScreen();
 		printMap(x,y);
 
 		printf("do you want to continue To see the roads?\n0 for No\n1 for Yes\n");
@@ -52,10 +54,14 @@ int main() {
 
 		Path path;
 
-		for(i=0;i<v;i++)
-    	a_star(c, Vill[i], &path);
+		clearScreen();
+		for(i=0;i<v;i++){
+		int countRoad;
+		int countPrice;
+    	a_star(c, Vill[i], &path, i);
+		}
 
-		printMap(x, y);
+		printMap(x,y);
 
 		printf("press any key to exit\n");
 		scanf("%d", &i);

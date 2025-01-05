@@ -4,9 +4,13 @@
 
 extern int map[17][17];
 
+void clearScreen() {
+    //function for clear screen
+    system("clear");
+}
+
 void printMap(int x,int y) {
     //function for print game map
-	    system("clear");
     int i, j;
     for(i=0; i<x; i++) {
         for(j=0; j<y; j++) {

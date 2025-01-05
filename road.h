@@ -33,5 +33,5 @@ int is_in_priority_queue(PriorityQueue *pq,Node node);
 int heuristic(Node a, Node b);
 int is_valid(int x, int y);
 void reconstruct_path(Node came_from[ROWS][COLS], Node current, Path *path);
-void a_star(Node start, Node goal, Path *path);
+void a_star(Node start, Node goal, Path *path, int j);
 #endif 

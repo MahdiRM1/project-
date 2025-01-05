@@ -48,7 +48,7 @@ void reconstruct_path(Node came_from[ROWS][COLS], Node current, Path *path) {
     path->nodes[path->size++] = current;
 }
 
-void a_star(Node start, Node goal, Path *path) {
+void a_star(Node start, Node goal, Path *path, int j) {
     PriorityQueue open_set = { .size = 0 };
     Node came_from[ROWS][COLS];
     int g_score[ROWS][COLS];
@@ -98,6 +98,8 @@ void a_star(Node start, Node goal, Path *path) {
             }
         }
     }
+    int countRoad = 0;
+    int countPrice = 0;
 
     if (best_goal.x != -1) {
         reconstruct_path(came_from, best_goal, path);
@@ -106,11 +108,15 @@ void a_star(Node start, Node goal, Path *path) {
     }
     	if (path->size > 0) {
         	for (int i = path->size - 1; i >= 0; i--) {
+                countPrice += map[path->nodes[i].x][path->nodes[i].y];
             	map[path->nodes[i].x][path->nodes[i].y] = 0;
+                countRoad++;
         	}
     	} else {
         	printf("No path found.\n");
     	}
+		printf("Road to village %d:%d\n", j+1, countRoad-2);
+		printf("Price to village %d:%d\n", j+1, countPrice-15);
         map[start.x][start.y] = 7;
         map[goal.x][goal.y] = 8;
 }
